@@ -1,0 +1,18 @@
+.img{
+    height: 90px;
+    width: 90px;
+}
+.d-flex{
+    margin: 1px;
+}
+.btn{
+    border: none;
+}
+.item-name{
+    height: 70px;
+    overflow: scroll;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+
+}
+

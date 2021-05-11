@@ -1,0 +1,35 @@
+.colums{
+    display: contents;
+}
+a{
+    font-size:x-large;
+}
+.icon{
+border-radius: 15%;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+.rowImg{
+      width: 50px;
+      height: 40px;
+      
+}
+.colImg{
+    /* padding: 0;
+    margin: 0; */
+    position: absolute
+}
+
+.imga{
+    position: absolute;
+    margin: 0 -57px;
+  }
+.title{
+    width: 100%;
+    text-align: center;
+    color: rgb(131, 170, 241); 
+} 

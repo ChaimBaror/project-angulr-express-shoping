@@ -1,0 +1,48 @@
+.card-h{
+  width: 200px;
+    height: 320px; 
+    text-align: center;
+   
+}
+.cRow{
+    display: flex;
+}
+.btn{
+    border: none;
+}
+
+.PText {
+    white-space: nowrap; 
+    background-color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+  }
+  
+  .PText:hover {
+    /* overflow: visible;
+    white-space:inherit;
+    background: rgb(247, 246, 190);
+    border-radius: 5px;
+    height: 180px; 
+    margin: -185px 0; 
+    position: absolute;
+    width: 168px;
+    overflow-x: hidden;
+    overflow-y: scroll; */
+  }
+
+.img-fluid{
+    height: 150px;   
+}
+.card-h:hover {
+  /* width: 250px;
+  height: 370px; */
+  border: 3px saddlebrown solid; 
+
+}
+
+.card-h:active {
+  border: 6px saddlebrown solid; 
+  
+}

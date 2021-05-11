@@ -1,0 +1,25 @@
+/* ol{
+    margin: 10px;
+}
+.col-in-footer{
+    display: flex;
+    
+}
+ul{
+    margin: 40px;
+}
+
+.titel-col{
+    font-style: italic;
+    font-size: x-large;
+} */
+.page-footer{
+    direction: rtl;
+}
+h5{
+    text-align: center;
+}
+li{
+    text-align: center;
+}
+
