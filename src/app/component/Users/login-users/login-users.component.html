@@ -1,12 +1,12 @@
 <div class="container">
   <form class="example-form" (ngSubmit)="submit()"  >
   <mat-form-field appearance="fill">
-    <mat-label>Enter your email</mat-label>
+    <mat-label>{{ 'EnterEmail' | transloco  }}  </mat-label>
     <input matInput placeholder="pat@example.com" [formControl]="email" required>
     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field> 
   <div class="button">
-    <button type="submit" mat-button [mat-dialog-close]="true" >Login</button>
+    <button  [disabled]="email.invalid" type="submit" mat-button [mat-dialog-close]="true" >{{ 'login' | transloco  }}</button>
   </div>
 </form>
 </div>

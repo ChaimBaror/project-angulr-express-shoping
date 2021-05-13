@@ -12,27 +12,15 @@ import {MatTableDataSource} from '@angular/material/table';
 
 
 export class AllProdctManagerComponent implements AfterViewInit  {
-  ELEMENT_DATA:ShopingCart[] = []
+  products$;
 
-  displayedColumns: string[] = ['id', 'title', 'name', 'img','price','amount'];
-  dataSource = new MatTableDataSource<ShopingCart>(this.ELEMENT_DATA);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(private ShopingCartService: ShopingCartService) {
-    this.ShopingCartService.getData()
-    .then(result => {
-      this.ELEMENT_DATA = result;
-    })
-    .catch(error => {
-      console.log('Error Getting Data: ', error);
-    });
-   }
+  constructor(private ShopingCartService: ShopingCartService)  {}
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.products$=  this.ShopingCartService.getData()
   }
 
 
- 
 
 }

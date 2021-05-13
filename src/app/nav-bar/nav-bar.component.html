@@ -24,22 +24,29 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
+        <li class="nav-item">
+          <a class="nav-link" (click)="openDialogLogin()" >{{ 'login' | transloco  }}</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{ 'area' | transloco  }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item text-dark" (click)="openDialogLogin()" >{{ 'login' | transloco  }}</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-dark" href="#">{{ 'Orders' | transloco  }} </a></li>
-            <li> <a class="nav-link text-light" href="#">{{ 'about' | transloco  }}</a> </li>
-        
+            <li>
+              <a class="dropdown-item text-dark" href="#">{{ 'Orders' | transloco  }} </a>
+            </li>
+            <hr class="dropdown-divider">
+            <li> <a class="dropdown-item text-dark" href="#">{{ 'about' | transloco  }}</a> </li>
+            <hr class="dropdown-divider">
+
+            <li> <a class="dropdown-item text-dark" href="#">{{ 'Specials' | transloco  }}</a> </li>
+
           </ul>
         </li>
-        <li class="nav-item">
+
+       
+
           <!-- <a class="nav-link text-light" href="#">{{ 'about' | transloco  }}</a> -->
-        </li>
+      
         <li class="nav-item">
           <!-- <a class="nav-link disabled text-light" href="#" tabindex="-1" aria-disabled="true">{{ 'Recipes' | transloco  }}</a> -->
         </li>

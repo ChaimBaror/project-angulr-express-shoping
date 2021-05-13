@@ -1,44 +1,47 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../login-users/login-users.component';
+import {UsersService}from '../../../services/users.service'
 
 @Component({
   selector: 'app-register-users',
   templateUrl: './register-users.component.html',
   styleUrls: ['./register-users.component.css']
 })
+
 export class RegisterUsersComponent implements OnInit {
-  options: FormGroup;
-    hideRequiredControl = new FormControl(false);
-    floatLabelControl = new FormControl('auto');
+   public UserExist;
 
 
   constructor(
     public dialogRef: MatDialogRef<RegisterUsersComponent>,
-    fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) 
-    {
-      console.log("RegisterUsersComponent",data);
-      
-    this.options = fb.group({
-      hideRequired: this.hideRequiredControl,
-      floatLabel: this.floatLabelControl,
-    });
-    }
- 
-  submit(){
-    console.log("FormBuilder",this.options.value);
+    private fb: FormBuilder,
+    private UsersService:UsersService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+      this.UserExist = this.UsersService.arrayUsers.findIndex(Users => Users.Email==this.data.email)
     
+      console.log("this.UserExist",this.UserExist);
+      
+    }
+
+    ngOnInit(): void {
+   
   }
   
-  
+    options = this.fb.group({
+      Email: [this.data.email, [Validators.required, Validators.pattern('^[a-zA-Z][a-zA-Z0-9_\.]+@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,}$')]],
+      UserName : ['', [Validators.required, Validators.minLength(2)]],
+      PhoneNumber: ['', [Validators.required, Validators.pattern('0[0-9\s.-]{5,13}')]],
+  });
+
+  submit(){
+    console.log("FormBuilder",this.options.value);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  ngOnInit(): void {
-  }
-
+  
 }

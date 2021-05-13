@@ -33,7 +33,7 @@ export class LoginUsersComponent implements OnInit {
   submit(){
     console.log("emailFormControl",this.email.value);
     this.dialog.open(RegisterUsersComponent,{
-      // width: '250px',
+      width: '270px',
       data: {email: this.email.value }
     })
   }

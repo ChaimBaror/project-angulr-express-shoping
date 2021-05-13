@@ -1,23 +1,22 @@
-  <div class="container">
+  <div class="container" *ngIf="UserExist">
     <form [formGroup]="options" (ngSubmit)="submit()">
- <p mat-dialog-title>your Email {{data.email}}</p>
 
-      <mat-form-field appearance="fill"
-          [hideRequiredMarker]="hideRequiredControl.value"
-          [floatLabel]="floatLabelControl.value">
-          <mat-label>user name</mat-label>
-
-        <input matInput placeholder="Enter User Name" required>
+      <mat-form-field appearance="fill">
+        <mat-label><b> Your Email  </b></mat-label>
+        <input formControlName="Email" matInput placeholder="Enter User Name" required>
+    </mat-form-field>
+ 
+      <mat-form-field appearance="fill">
+          <mat-label>User Name</mat-label>
+          <input type="text" id="inputName" formControlName="UserName" matInput placeholder="Enter User Name" required>
       </mat-form-field>
   
-      <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
-        <mat-label>phone number</mat-label>
-        <input matInput placeholder="Phone Numberr">
+      <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput  id="PhoneNumber" formControlName="PhoneNumber" placeholder="Phone Number">
       </mat-form-field>
   
-      <mat-form-field appearance="fill"
-          [hideRequiredMarker]="hideRequiredControl.value"
-          [floatLabel]="floatLabelControl.value">
+      <mat-form-field appearance="fill">
         <mat-select required>
           <mat-option>-- None --</mat-option>
           <mat-option value="option">Option</mat-option>
@@ -29,5 +28,11 @@
         <button type="submit" mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
       </div>
     </form>
+  </div>
+
+
+  <div class="container" *ngIf="!UserExist">
+    <H1>Enter code</H1>
+    <input type="" name="" id="">
   </div>
 

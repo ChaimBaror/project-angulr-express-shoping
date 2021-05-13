@@ -1,0 +1,90 @@
+<div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <span class="table-add float-right mb-3 mr-2">
+            <!-- <a (click)=addPrudct() class="text-success"><i
+              class="fas fa-plus fa-2x" aria-hidden="true"></i></a> -->
+            </span>
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+  
+          <thead class="table">
+            <!-- 
+            id:string,
+            title:string
+            name:string,
+            img:string,
+            price:number,
+            amount:number -->
+            <tr>
+              <th class="text-center">Index</th>
+              <th class="text-center">Image</th>
+              <th class="text-center">Id</th>
+              <th class="text-center">Name Product</th>
+              <th class="text-center">Category</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Active</th>
+              <th class="text-center">Amount</th>
+            </tr>
+          </thead>
+  
+          <tbody *ngFor="let prudct of products$ | async ; index as i">
+            <tr>
+              <td class="pt-3-half" contenteditable="true">{{i}}</td>
+
+              <td class="pt-3-half" contenteditable="true">
+                <img src="{{prudct.img}}" alt="..." srcset="" width="50px" height="50px">
+              </td>
+              <td class="pt-3-half" contenteditable="true">{{prudct.id}}</td>
+
+              <td class="pt-3-half" contenteditable="true">
+                 <input name="nameProduct" class="form-control"
+                  [(ngModel)]="prudct.name" minlength="2" placeholder="nameProduct" ngModel>
+              </td>
+              <td class="pt-3-half" contenteditable="true">
+                  <input name="title" class="form-control"
+                  [(ngModel)]="prudct.title" minlength="2" placeholder="Category" ngModel>
+              </td>
+  
+              <td class="pt-3-half" contenteditable="true">
+                  <input name="price" class="form-control"
+                  [(ngModel)]= "prudct.price" placeholder="price" ngModel>
+                </td>
+              <!-- <td class="pt-3-half" contenteditable="true">
+                  <input name="category" class="form-control"
+                 type="datetime-local" [(ngModel)]='prudct.timeEnd'  placeholder="timeEnd" ngModel>{{prudct.timeEnd | date}}
+              </td> -->
+              <td  class="pt-3-half" contenteditable="true"><input type="checkbox" [(ngModel)] = "prudct.isActive"> &nbsp; {{prudct.isActive}}
+             </td>
+             
+             <td >
+                <input name="amount" class="form-control" type="number"
+                [(ngModel)]= "prudct.amount" placeholder="amount" ngModel>
+              </td>
+  
+                      
+              <td class="pt-3-half">
+                <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                      aria-hidden="true"></i></a></span>
+                <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                      aria-hidden="true"></i></a></span>
+              </td>
+              <td>
+                <span class="table-remove">
+                    <button type="button"
+                    class="btn btn-danger btn-rounded btn-sm my-0">Remove</button>
+                </span>
+              </td>
+              <td>
+                <span class="col">
+                  <button  class="btn btn-secondary btn-rounded btn-sm my-0">Save</button>
+                </span>
+  
+              </td>
+            </tr>
+  
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

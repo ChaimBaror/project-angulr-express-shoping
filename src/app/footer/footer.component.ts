@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-
 
 @Component({
   selector: 'app-footer',
@@ -8,11 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) {}
-
+  categories: [];
+  constructor() { }
 
   ngOnInit(): void {
   }
- 
+
 }
