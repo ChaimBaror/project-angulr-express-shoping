@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterUsersComponent } from '../register-users/register-users.component';
 
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
+export interface DialogData {
+  email: string;
+  name: string;
 }
+
 @Component({
   selector: 'app-login-users',
   templateUrl: './login-users.component.html',
@@ -16,13 +15,27 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginUsersComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog,) { }
 
   ngOnInit(): void {
   }
+  email = new FormControl('', [Validators.required, Validators.email]);
 
-  emailFormControl = new FormControl('', [Validators.required,Validators.email,]);
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
 
-  matcher = new MyErrorStateMatcher();
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+
+  submit(){
+    console.log("emailFormControl",this.email.value);
+    this.dialog.open(RegisterUsersComponent,{
+      // width: '250px',
+      data: {email: this.email.value }
+    })
+  }
 
 }

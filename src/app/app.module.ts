@@ -22,6 +22,8 @@ import { AdministrativeAreaComponent } from './component/Admin/administrative-ar
 import { LoginManagerComponent } from './component/Admin/login-manager/login-manager.component';
 import { LoginUsersComponent } from './component/Users/login-users/login-users.component';
 import { RegisterUsersComponent } from './component/Users/register-users/register-users.component';
+import { AddProdctComponent } from './component/Admin/add-prodct/add-prodct.component';
+import { AllProdctManagerComponent } from './component/Admin/all-prodct-manager/all-prodct-manager.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { RegisterUsersComponent } from './component/Users/register-users/registe
     AdministrativeAreaComponent,
     LoginManagerComponent,
     LoginUsersComponent,
-    RegisterUsersComponent
+    RegisterUsersComponent,
+    AddProdctComponent,
+    AllProdctManagerComponent
   ],
   imports: [
     HttpClientModule,

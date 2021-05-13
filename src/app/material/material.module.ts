@@ -12,7 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [],
@@ -27,7 +27,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSelectModule,
     MatListModule,
     MatSidenavModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatChipsModule 
   ],
   exports: [
     CommonModule,

@@ -9,6 +9,8 @@
         <div [ngClass]="item.name.length > 20 ?  'PText' : ''">
           {{item.name}}
         </div>
+        <span>$ {{item.price}}</span>
+        <hr>
         <!-- <div class="row">
           <div class="col-4">
             <div class="btn btn-sm" (click)="toAdd()">

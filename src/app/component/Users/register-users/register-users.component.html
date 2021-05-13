@@ -1,1 +1,33 @@
-<p>register-users works!</p>
+  <div class="container">
+    <form [formGroup]="options" (ngSubmit)="submit()">
+ <p mat-dialog-title>your Email {{data.email}}</p>
+
+      <mat-form-field appearance="fill"
+          [hideRequiredMarker]="hideRequiredControl.value"
+          [floatLabel]="floatLabelControl.value">
+          <mat-label>user name</mat-label>
+
+        <input matInput placeholder="Enter User Name" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+        <mat-label>phone number</mat-label>
+        <input matInput placeholder="Phone Numberr">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill"
+          [hideRequiredMarker]="hideRequiredControl.value"
+          [floatLabel]="floatLabelControl.value">
+        <mat-select required>
+          <mat-option>-- None --</mat-option>
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+        <mat-label><mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i></mat-label>
+      </mat-form-field>
+      <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button type="submit" mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+      </div>
+    </form>
+  </div>
+

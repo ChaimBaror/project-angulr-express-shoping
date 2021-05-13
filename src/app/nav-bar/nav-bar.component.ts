@@ -13,7 +13,6 @@ export class NavBarComponent  {
   public iconCart:boolean;
    arr = []
 
-  headlines
   constructor(private ShopingCartService :ShopingCartService,
     public dialog: MatDialog,
     private service: TranslocoService,
