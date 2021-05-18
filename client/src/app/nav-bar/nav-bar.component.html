@@ -1,0 +1,76 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div>
+    <a class="nav-link text-light" routerLink="shoping-cart"> 
+      <div *ngIf="!iconCart">
+     <img  src="assets\icons\SpottedBriskDuckbillplatypus-max-1mb.gif" height="40px">
+    </div> 
+    
+     <div *ngIf="iconCart" >
+       <img class="imga" src="assets\icons\cart.gif" height="60" width="120"> 
+         <div class="row rowImg">
+              <div class="colImg" *ngFor="let item of arr">
+                  <img style="border-radius: 30%;margin: 23px 0;" src={{item.img}} height="7px" width="25px">
+              </div>
+              <sub style="position: initial;"  class="badge rounded-pill ">{{arr.length}}</sub>
+         </div>
+
+    </div>
+  </a>
+  </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" (click)="openDialogLogin()" >{{ 'login' | transloco  }}</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ 'area' | transloco  }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item text-dark" href="#">{{ 'Orders' | transloco  }} </a>
+            </li>
+            <hr class="dropdown-divider">
+            <li> <a class="dropdown-item text-dark" href="#">{{ 'about' | transloco  }}</a> </li>
+            <hr class="dropdown-divider">
+
+            <li> <a class="dropdown-item text-dark" href="#">{{ 'Specials' | transloco  }}</a> </li>
+
+          </ul>
+        </li>
+
+       
+
+          <!-- <a class="nav-link text-light" href="#">{{ 'about' | transloco  }}</a> -->
+      
+       
+        <li class="nav-item">
+          <!-- <a class="nav-link text-light" href="#">{{ 'Specials' | transloco  }}</a> -->
+        </li>
+      </ul> 
+    </div>
+
+    <div class="title">
+      <h1>{{ 'mainTitle' | transloco }}</h1>
+    </div>
+	
+  </div>
+ 
+  <div>
+    <button (click)="change('en')">English</button>
+    <button (click)="change('he')">עברית</button>
+  </div>
+
+</nav>
+
+<li class="nav-item" style="position: fixed;" >
+  <a class="nav-link " routerLink="/admin" routerLinkActive="active">ADNIM</a>
+</li>
+
+
+
+
