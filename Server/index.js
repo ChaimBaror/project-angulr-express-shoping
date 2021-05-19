@@ -2,7 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser'); 
 const cors = require('cors');
 
-const app = express()
+const app = express();
+
+const db = require('./config/database')
+
 
 // parse application/x-www-form-urlencoded
 app.use(cors())

@@ -1,0 +1,27 @@
+GET http://localhost:3000/users/fde2e13ec481dfc1 HTTP/1.1
+
+###
+
+POST  http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+{
+  "email": "yaki.klein12dsd@gmail.com",
+  "name": "yaki"
+}
+
+###
+
+PATCH http://localhost:3000/user/f646daf0fb03c840 HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "Yaacov",
+  "profilePicture": "https://i.stack.imgur.com/Bb6z1.jpg?s=64&g=1"
+}
+
+###
+
+DELETE http://localhost:3000/user/e5d34b4862fa88f9 HTTP/1.1
+
+###

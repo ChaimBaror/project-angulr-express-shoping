@@ -1,17 +1,11 @@
 const { Sequelize } = require("sequelize");
 
-const host = "database-1.cnjllearqjtz.us-east-1.rds.amazonaws.com"; //localhost
-const database = "first_app";
-const username = "postgres";
-const dialect = "postgres";
-const schema = "application";
-
-exports.getConnection = () => {
-  return new Sequelize({
-    host,
-    database,
-    username,
-    schema,
-    dialect,
-  });
+const sequelize = new Sequelize('postgres://yknqmxbs:WMcso07Jv0xV9U5xIEQP4FernRMl2kZx@tai.db.elephantsql.com/yknqmxbs') // Example for postgres
+try {
+  sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
 }
+
+

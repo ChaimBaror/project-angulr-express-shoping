@@ -1,30 +1,35 @@
 const router = require('express').Router();
 const crypto = require('crypto');
 const validator = require("validator");
+const user = require('../models/users')
+
 
 
 router.get("/", (req, res, next) => {
-  const users = "data";
+  const users = user;
   if (users) {
-    res.send("users");
+    res.send(users);
     return;
   }
   next();
 });
 
 
+  
 router.post("/", async (req, res) => {
   const { body } = req;
   try {
-    const user = validateUser(body, false);
-    const newUser = addtojson(user)
-    res.json(newUser);
-  } catch (e) {
+  const userData = validateUser(body, false);
+    console.log(userData);
+    const u = await user.create(userData);
+    res.json("user", u);
+  } catch(e) {
     res.status(422).json({
       error: e.message,
     })
   }
 })
+
 
 
 function validateUser(body, enforce) {
@@ -43,7 +48,6 @@ function validateUser(body, enforce) {
     id: id || crypto.randomBytes(8).toString("hex"),
     name,
     email,
-    age
   }
 }
 

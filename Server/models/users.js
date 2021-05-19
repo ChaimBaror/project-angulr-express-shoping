@@ -2,6 +2,18 @@ const { Model, DataTypes } = require('sequelize');
 
 class User extends Model {}
 
+/**
+ * @typedef {object} User
+ * @property {string} id 
+ * @property {string} name 
+ * @property {string} email
+ * 
+ */
+
+/**
+ * 
+ * @param {Sequelize} sequelize - instance of sequelize
+ */
 async function init(sequelize) {
   User.init({
     id: {
@@ -14,11 +26,10 @@ async function init(sequelize) {
       unique: true,
       type: DataTypes.STRING,
     },
-    firstName: {
+    name: {
       allowNull: false,
       type: DataTypes.STRING,
     },
-
   }, { 
     sequelize, 
     modelName: "user",
@@ -75,3 +86,4 @@ module.exports = {
   init,
   User
 };
+
