@@ -6,8 +6,8 @@ POST  http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-  "email": "yaki.klein12dsd@gmail.com",
-  "name": "yaki"
+  "email": "chaim.klein12dsd@gmail.com",
+  "name": "yaki chaim"
 }
 
 ###

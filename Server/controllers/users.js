@@ -1,56 +1,36 @@
-const router = require('express').Router();
-const crypto = require('crypto');
-const validator = require("validator");
-const user = require('../models/users')
+// const router = require('express').Router();
+
+const db = require('../models/users')
+const validateUser = require('../validation/validation')
+
+console.log( db.User);
 
 
-
-router.get("/", (req, res, next) => {
-  const users = user;
-  if (users) {
-    res.send(users);
-    return;
-  }
-  next();
-});
-
-
+exports.create = (req, res) => {
+  console.log("post create " ,req);
+    const { body } = req;
   
-router.post("/", async (req, res) => {
-  const { body } = req;
-  try {
-  const userData = validateUser(body, false);
-    console.log(userData);
-    const u = await user.create(userData);
-    res.json("user", u);
-  } catch(e) {
-    res.status(422).json({
-      error: e.message,
-    })
-  }
-})
-
-
-
-function validateUser(body, enforce) {
-  if (!body) {
-    throw new Error("Invalid body");
-  }
-  const { email, name, id } = body;
-  if (!email || email && !validator.isEmail(email)) {
-    throw new Error("Invalid email");
-  }
-  if (!name || name && "string" !== typeof name) {
-    throw new Error("Invalid name");
-  }
-
-  return {
-    id: id || crypto.randomBytes(8).toString("hex"),
-    name,
-    email,
+  try{
+      // Building Customer object from upoading request's body
+      const user = validateUser(body, false);
+      console.log(user);
+      // Save to MySQL database
+    
+     db.User.create(user).then(result => {    
+          // send uploading message to client
+          res.status(200).json({
+              message: "Upload Successfully a Customer with id = " + result.id,
+              customer: result,
+          });
+      });
+  }catch(error){
+      res.status(500).json({
+          message: "Fail!",
+          error: error.message
+      });
   }
 }
 
 
 
-module.exports = router;
+// module.exports = router;

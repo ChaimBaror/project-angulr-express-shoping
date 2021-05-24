@@ -4,7 +4,8 @@ const cors = require('cors');
 
 const app = express();
 
-const db = require('./config/database')
+const db = require('./config/mongoose');
+
 
 
 // parse application/x-www-form-urlencoded
