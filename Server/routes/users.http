@@ -22,6 +22,6 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/users/13b473f8194fa012 HTTP/1.1
+DELETE http://localhost:3000/users/f2002d81ac6557e8 HTTP/1.1
 
 ###

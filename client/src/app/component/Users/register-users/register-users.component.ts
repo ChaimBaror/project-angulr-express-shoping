@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../login-users/login-users.component';
 import { UsersService } from '../../../services/users.service'
+import { Users } from './../../../services/users.service';
 
 @Component({
   selector: 'app-register-users',
@@ -18,11 +19,12 @@ export class RegisterUsersComponent implements OnInit {
 
 
   constructor(
+    private logginService : UsersService,
     public dialogRef: MatDialogRef<RegisterUsersComponent>,
     private fb: FormBuilder,
     private UsersService: UsersService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    this.UserExist = this.UsersService.arrayUsers.findIndex(Users => Users.Email == this.data.email)
+    this.UserExist = this.UsersService.arrayUsers.findIndex(Users => Users.email == this.data.email)
 
     console.log("this.UserExist", this.UserExist);
 
@@ -39,7 +41,14 @@ export class RegisterUsersComponent implements OnInit {
   });
 
   submit() {
-    console.log("FormBuilder", this.options.value);
+    const {Email ,UserName ,PhoneNumber} = this.options.value;
+    const Users: Users = { 
+    email:Email,
+    name:UserName,
+    PhoneNumber : PhoneNumber
+    }
+    console.log("FormBuilder", Users);
+    this.logginService.postUser(Users)
   }
 
   onNoClick(): void {

@@ -1,4 +1,4 @@
-const {DataTypes} = require('sequelize')
+
 module.exports = (sequelize, Sequelize) => {
   sequelize.sync();
 
@@ -6,16 +6,16 @@ module.exports = (sequelize, Sequelize) => {
         id: {
           allowNull: false,
           primaryKey: true,
-          type: DataTypes.STRING,
+          type: Sequelize.DataTypes.STRING,
         },
         email: {
           allowNull: false,
           unique: true,
-          type: DataTypes.STRING,
+          type: Sequelize.DataTypes.STRING,
         },
         name: {
           allowNull: false,
-          type: DataTypes.STRING,
+          type: Sequelize.DataTypes.STRING,
         },
   });  return users;
 

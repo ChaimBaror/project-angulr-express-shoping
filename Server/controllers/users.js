@@ -12,6 +12,7 @@ try {
 }
 
 const create = async  (req, res) => {
+    console.log(req.body);
     const { body } = req;
   try{
       // Building Customer object from upoading request's body
