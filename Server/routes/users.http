@@ -1,4 +1,4 @@
-GET http://localhost:3000/users/fde2e13ec481dfc1 HTTP/1.1
+GET http://localhost:3000/usersAll HTTP/1.1
 
 ###
 
@@ -6,8 +6,8 @@ POST  http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-  "email": "chaim.klein12dsd@gmail.com",
-  "name": "yaki chaim"
+  "email": "test99.baror12dsd@gmail.com",
+  "name": "test99 moshe"
 }
 
 ###

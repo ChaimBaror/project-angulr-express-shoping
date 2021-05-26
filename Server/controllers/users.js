@@ -1,25 +1,26 @@
 // const router = require('express').Router();
 
-const db = require('../models/users')
+const db = require('../models')
 const validateUser = require('../validation/validation')
 
-console.log( db.User);
+db.sequelize.sync();
 
+exports.getAll = async (req, res) => {
+   users = await db.User.findAll()
+   res.status(200).json(users);
+}
 
 exports.create = (req, res) => {
-  console.log("post create " ,req);
     const { body } = req;
-  
   try{
       // Building Customer object from upoading request's body
       const user = validateUser(body, false);
       console.log(user);
-      // Save to MySQL database
-    
-     db.User.create(user).then(result => {    
+      // Save to Postgres database
+    db.User.create(user).then(result => {    
           // send uploading message to client
           res.status(200).json({
-              message: "Upload Successfully a Customer with id = " + result.id,
+              message: "Upload Successfully a User with id = " + result.id,
               customer: result,
           });
       });
@@ -30,7 +31,3 @@ exports.create = (req, res) => {
       });
   }
 }
-
-
-
-// module.exports = router;

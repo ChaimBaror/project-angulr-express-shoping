@@ -8,7 +8,7 @@ router.use('/products', require('../controllers/products'));
 
 
 router.post('/users', users.create);
-// router.get('/users/all', users.retrieveAllCustomers);
+router.get('/usersAll', users.getAll);
 // router.get('/users/onebyid/:id', users.getCustomerById);
 // router.delete('/users/delete/:id', users.deleteById);
 
