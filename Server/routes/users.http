@@ -2,6 +2,16 @@ GET http://localhost:3000/usersAll HTTP/1.1
 
 ###
 
+POST http://localhost:3000/usersEmail HTTP/1.1
+content-type: application/json
+
+{
+  "email": "test036663000.baror12dsd@gmail.com",
+  "name": "test0033000 moshe"
+
+}
+###
+
 POST  http://localhost:3000/users HTTP/1.1
 content-type: application/json
 

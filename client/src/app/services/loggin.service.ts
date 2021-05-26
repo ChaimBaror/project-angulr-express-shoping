@@ -2,33 +2,24 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ApiHTTPService } from './api-http.service';
+import { Users } from './users.service';
 
-export interface Users{
-  name:String;
-  email:String;
-  PhoneNumber:String;
-  accessToken?:any
-}
+
+
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
-
+export class LogginService {
   currentUser$: BehaviorSubject<Users> = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')))
   user: Users
-  arrayUsers: Users[] = []
-
 
   constructor(private _router: Router, private apiServer: ApiHTTPService) {
-    this.arrayUsers = [
-      { name: "chaim",  email: "chaim@admin.com", PhoneNumber: "0521010100" },
-    ]
-   }
+  }
 
   postUser(user: Users) {
     try {
       this.apiServer.requestBady(`/users`, 'POST', user);
-      // this.currentUser$.next(user)
+      this.currentUser$.next(user)
       localStorage.setItem('currentUser', JSON.stringify(user));
       localStorage.setItem('loggedInToken', JSON.stringify(user.accessToken));
     } 
@@ -39,5 +30,4 @@ export class UsersService {
     // this._router.navigate(['/SignUn'])
 
   }
-
 }

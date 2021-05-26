@@ -1,6 +1,14 @@
 
 const db = require('../models')
 const validateUser = require('../validation/validation')
+const { CheckEmailIfExists } = require('../validation/checkValidation')
+
+
+const emailIfExists = async (req,res)=>{
+    const {email} = req.body;
+    console.log("emailConteoler",email);
+    await  CheckEmailIfExists(email)
+}
 
 const getAll = async (req, res) => {
 try {
@@ -52,4 +60,5 @@ module.exports = {
  getAll,
  create,
  deleteById,
+ emailIfExists
 };
