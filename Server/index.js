@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser'); 
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
@@ -18,14 +18,14 @@ app.get('/', (req, res) => {
     })
 })
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
-  });
+});
 
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`listening at http://localhost:${port}`)

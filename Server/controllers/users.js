@@ -4,61 +4,66 @@ const validateUser = require('../validation/validation')
 const { CheckEmailIfExists } = require('../validation/checkValidation')
 
 
-const emailIfExists = async (req,res)=>{
-    const {email} = req.body;
-    console.log("emailConteoler",email);
-    await  CheckEmailIfExists(email)
+const emailIfExists = async (req, res) => {
+  const { email } = req.body;
+  const ifemail = await CheckEmailIfExists(email)
+  res.status(200).json({
+    email: email,
+    message: "email is Exists in database ? " + ifemail,
+    Exists: ifemail,
+  });
+
 }
 
 const getAll = async (req, res) => {
-try {
-   users = await db.User.findAll()
-   res.status(200).json(users);
- } catch (error) {
+  try {
+    users = await db.User.findAll()
+    res.status(200).json(users);
+  } catch (error) {
     return res.status(500).json({ error: error.message });
   }
 }
 
-const create = async  (req, res) => {
-    console.log(req.body);
-    const { body } = req;
-  try{
-      // Building Customer object from upoading request's body
-      const user = validateUser(body, false);
-      // Save to Postgres database
-      await  db.User.create(user).then(result => {    
-          // send uploading message to client
-          res.status(200).json({
-              message: "Upload Successfully a User with email = " + result.email,
-              customer: result,
-          });
+const create = async (req, res) => {
+  console.log(req.body);
+  const { body } = req;
+  try {
+    // Building Customer object from upoading request's body
+    const user = validateUser(body, false);
+    // Save to Postgres database
+    await db.User.create(user).then(result => {
+      // send uploading message to client
+      res.status(200).json({
+        message: "Upload Successfully a User with email = " + result.email,
+        user: result,
       });
-  }catch(error){
-      res.status(500).json({
-          message: "Fail!",
-          error: error.message
-      });
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Fail!",
+      error: error.message
+    });
   }
 }
 
 const deleteById = async (req, res) => {
-    try {
+  try {
     const { id } = req.params;
-	const deleted = await db.User.destroy({
-        where: {id: id}
+    const deleted = await db.User.destroy({
+      where: { id: id }
     });
     if (deleted) {
-        return res.status(204).send("User deleted");
-      }
-      throw new Error("User not found");
-    } catch (error) {
-      return res.status(500).send(error.message);
+      return res.status(204).send("User deleted");
     }
-  };
+    throw new Error("User not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 
 module.exports = {
- getAll,
- create,
- deleteById,
- emailIfExists
+  getAll,
+  create,
+  deleteById,
+  emailIfExists
 };

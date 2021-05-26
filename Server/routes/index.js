@@ -13,8 +13,8 @@ router.post('/usersEmail', users.emailIfExists);
 router.delete('/users/:id', users.deleteById);
 
 
-router.get('/router', function(req, res) {
-    res.send('Hello from root route.')
-  });
+router.get('/router', function (req, res) {
+  res.send('Hello from root route.')
+});
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 
-class User extends Model {}
+class User extends Model { }
 
 /**
  * @typedef {object} User
@@ -31,10 +31,9 @@ async function init(sequelize) {
       allowNull: false,
       type: DataTypes.STRING,
     },
-  }, { 
-    sequelize, 
+  }, {
+    sequelize,
     modelName: "user",
-    schema: "application",
     freezeTableName: true,
     timestamps: false
   });
@@ -54,7 +53,7 @@ async function init(sequelize) {
      * @param {string} id 
      */
     async delete(id) {
-      const rowsDelete = await User.destroy({ 
+      const rowsDelete = await User.destroy({
         where: { id }
       })
       return rowsDelete === 1;
@@ -73,8 +72,8 @@ async function init(sequelize) {
      * @param {string[]} fields
      */
     async update(userData, fields) {
-      const [_result, users] = await db.user.update(userData, { 
-        where: { id: userData.id }, 
+      const [_result, users] = await db.user.update(userData, {
+        where: { id: userData.id },
         returning: true,
         fields
       });
