@@ -1,26 +1,26 @@
-// const router = require('express').Router();
 
 const db = require('../models')
 const validateUser = require('../validation/validation')
 
-db.sequelize.sync();
-
-exports.getAll = async (req, res) => {
+const getAll = async (req, res) => {
+try {
    users = await db.User.findAll()
    res.status(200).json(users);
+ } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 }
 
-exports.create = (req, res) => {
+const create = async  (req, res) => {
     const { body } = req;
   try{
       // Building Customer object from upoading request's body
       const user = validateUser(body, false);
-      console.log(user);
       // Save to Postgres database
-    db.User.create(user).then(result => {    
+      await  db.User.create(user).then(result => {    
           // send uploading message to client
           res.status(200).json({
-              message: "Upload Successfully a User with id = " + result.id,
+              message: "Upload Successfully a User with email = " + result.email,
               customer: result,
           });
       });
@@ -31,3 +31,24 @@ exports.create = (req, res) => {
       });
   }
 }
+
+const deleteById = async (req, res) => {
+    try {
+    const { id } = req.params;
+	const deleted = await db.User.destroy({
+        where: {id: id}
+    });
+    if (deleted) {
+        return res.status(204).send("User deleted");
+      }
+      throw new Error("User not found");
+    } catch (error) {
+      return res.status(500).send(error.message);
+    }
+  };
+
+module.exports = {
+ getAll,
+ create,
+ deleteById,
+};

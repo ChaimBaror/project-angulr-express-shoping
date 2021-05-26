@@ -1,5 +1,7 @@
 const {DataTypes} = require('sequelize')
 module.exports = (sequelize, Sequelize) => {
+  sequelize.sync();
+
   const users = sequelize.define("users", {
         id: {
           allowNull: false,
@@ -16,4 +18,6 @@ module.exports = (sequelize, Sequelize) => {
           type: DataTypes.STRING,
         },
   });  return users;
+
+
 };

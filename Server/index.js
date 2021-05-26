@@ -4,8 +4,6 @@ const cors = require('cors');
 
 const app = express();
 
-// const mongodb = require('./config/mongodb');
-
 
 // parse application/x-www-form-urlencoded
 app.use(cors())
