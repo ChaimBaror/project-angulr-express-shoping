@@ -1,0 +1,15 @@
+
+POST  http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+  "category":"Diamonds",
+  "title":"tennis bracelet",
+  "text":"tennis Diamond option",
+  "Pictures":"https://images-na.ssl-images-amazon.com/images/I/717jCeVecsL._AC_UY675_.jpg",
+  "price":"200",
+  "amount":"5",
+  "active" : true
+}
+
+###

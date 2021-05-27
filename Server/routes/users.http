@@ -6,7 +6,7 @@ POST http://localhost:3000/usersEmail HTTP/1.1
 content-type: application/json
 
 {
-  "email": "chaim@adm8in.com"
+  "email": "chaim@agggdm8in.com"
 
 }
 ###
@@ -15,8 +15,9 @@ POST  http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-  "email": "test033000.baror12dsd@gmail.com",
-  "name": "test0033000 moshe"
+  "name": "admin1 test",
+  "email": "admincha9im@admin.com",
+  "PhoneNumber":"0527158770"
 }
 
 ###
@@ -31,6 +32,6 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/users/f2002d81ac6557e8 HTTP/1.1
+DELETE http://localhost:3000/users/4fcf73cc30b69e28 HTTP/1.1
 
 ###

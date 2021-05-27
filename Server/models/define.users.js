@@ -17,6 +17,10 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       type: Sequelize.DataTypes.STRING,
     },
+    PhoneNumber:{
+      unique: true,
+      type: Sequelize.DataTypes.STRING,
+    }
   }); return users;
 
 

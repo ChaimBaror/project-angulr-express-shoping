@@ -5,7 +5,7 @@ function validateUser(body, enforce) {
   if (!body) {
     throw new Error("Invalid body");
   }
-  const { email, name, id } = body;
+  const { email, name, id ,PhoneNumber } = body;
   if (!email || email && !validator.isEmail(email)) {
     throw new Error("Invalid email");
   }
@@ -17,7 +17,25 @@ function validateUser(body, enforce) {
     id: id || crypto.randomBytes(8).toString("hex"),
     name,
     email,
+    PhoneNumber,
   }
 }
+function validateProducts(body){
+  const {id,category,title,text,price,amount,active,Pictures} = body;
+  return {
+    id: id || crypto.randomBytes(8).toString("hex"),
+    category,
+    title,
+    text,
+    price,
+    Pictures,
+    amount,
+    active
 
-module.exports = validateUser;
+  }
+}
+module.exports ={
+  validateUser,
+  validateProducts
+
+} 

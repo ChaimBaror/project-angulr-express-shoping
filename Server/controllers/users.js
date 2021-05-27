@@ -1,16 +1,16 @@
 
 const db = require('../models')
-const validateUser = require('../validation/validation')
+const { validateUser } = require('../validation/validation')
 const { CheckEmailIfExists } = require('../validation/checkValidation')
 
-
+// db.User()
 const emailIfExists = async (req, res) => {
   const { email } = req.body;
-  const ifemail = await CheckEmailIfExists(email)
+  const ifEmail = await CheckEmailIfExists(email)
   res.status(200).json({
     email: email,
-    message: "email is Exists in database ? " + ifemail,
-    Exists: ifemail,
+    message: "email is Exists in database ? " + ifEmail,
+    Exists: ifEmail,
   });
 
 }
@@ -25,7 +25,7 @@ const getAll = async (req, res) => {
 }
 
 const create = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { body } = req;
   try {
     // Building Customer object from upoading request's body

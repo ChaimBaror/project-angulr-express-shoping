@@ -17,9 +17,11 @@ try {
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// const UserModel = require("./model.users");
-// db.UserModel = UserModel.init(sequelize)
+require("./model.users").init(sequelize);
+require("./model.product").init(sequelize);
+db.User =require('./model.users').User
+db.Product =require('./model.product').Products
 
-db.User = require("./define.users")(sequelize, Sequelize);
+// db.User = require("./define.users")(sequelize, Sequelize);
 
 module.exports = db;

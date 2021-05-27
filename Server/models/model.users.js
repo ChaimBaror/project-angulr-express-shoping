@@ -8,6 +8,7 @@ class User extends Model { }
  * @property {string} id 
  * @property {string} name 
  * @property {string} email
+ * @property {string} PhoneNumber
  * 
  */
 
@@ -31,11 +32,16 @@ async function init(sequelize) {
       allowNull: false,
       type: DataTypes.STRING,
     },
+    PhoneNumber:{
+      allowNull: false,
+      unique: true,
+      type: DataTypes.STRING,
+    }
   }, {
     sequelize,
     modelName: "user",
     freezeTableName: true,
-    timestamps: false
+    timestamps: true
   });
   await User.sync();
 
