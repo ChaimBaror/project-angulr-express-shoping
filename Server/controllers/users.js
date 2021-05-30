@@ -1,7 +1,9 @@
-
+const {sendMail} = require('../sendEmail/nodemailer')
 const db = require('../models')
 const { validateUser } = require('../validation/validation')
 const { CheckEmailIfExists } = require('../validation/checkValidation')
+
+
 
 // db.User()
 const emailIfExists = async (req, res) => {
@@ -16,6 +18,8 @@ const emailIfExists = async (req, res) => {
 }
 
 const getAll = async (req, res) => {
+  sendMail("chbaror@gmail.com" , "hi is test ?" , "this is work" )
+
   try {
     users = await db.User.findAll()
     res.status(200).json(users);
