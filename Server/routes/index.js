@@ -6,7 +6,7 @@ const products = require('../controllers/products');
 // router.use('/products', require('../controllers/products'));
 
 
-
+router.post('/usercheckCode', users.checkCode);
 router.post('/users', users.create);
 router.get('/usersAll', users.getAll);
 router.post('/usersEmail', users.emailIfExists);

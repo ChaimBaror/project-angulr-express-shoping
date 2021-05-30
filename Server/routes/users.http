@@ -6,17 +6,27 @@ POST http://localhost:3000/usersEmail HTTP/1.1
 content-type: application/json
 
 {
-  "email": "chaim@agggdm8in.com"
+  "email": "chbaror@gmail.com"
 }
 ###
 
+
+POST http://localhost:3000/usercheckCode HTTP/1.1
+content-type: application/json
+
+{
+  "email": "chbaror@gmail.com",
+  "code" : "4887"
+}
+
+###
 POST  http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
   "name": "admin1 test",
-  "email": "admincha9im@admin.com",
-  "PhoneNumber":"0527158770"
+  "email": "chbaror@gmail.com",
+  "PhoneNumber":"0527158877"
 }
 
 ###

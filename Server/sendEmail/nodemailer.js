@@ -7,7 +7,7 @@ let toText ="Hello Hi "
 
 const sendMail = (Email,subjec, text) =>  {
   toEmail = Email;
-  toSubject = subjec;
+  // toSubject = subjec;
   toText = text;
   main().catch(console.error);
 }

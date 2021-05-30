@@ -36,7 +36,12 @@ async function init(sequelize) {
       allowNull: false,
       unique: true,
       type: DataTypes.STRING,
+    },
+    codeRandom:{
+      allowNull: true,
+      type: DataTypes.STRING,
     }
+
   }, {
     sequelize,
     modelName: "user",
@@ -75,7 +80,7 @@ async function init(sequelize) {
     },
     /**
      * @param {User} userData
-     * @param {string[]} fields
+     * @param {string} fields
      */
     async update(userData, fields) {
       const [_result, users] = await db.user.update(userData, {

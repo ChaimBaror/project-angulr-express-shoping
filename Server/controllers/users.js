@@ -1,11 +1,7 @@
-const {sendMail} = require('../sendEmail/nodemailer')
 const db = require('../models')
 const { validateUser } = require('../validation/validation')
-const { CheckEmailIfExists } = require('../validation/checkValidation')
+const { CheckEmailIfExists  , CheckCode} = require('../validation/checkValidation')
 
-
-
-// db.User()
 const emailIfExists = async (req, res) => {
   const { email } = req.body;
   const ifEmail = await CheckEmailIfExists(email)
@@ -14,12 +10,21 @@ const emailIfExists = async (req, res) => {
     message: "email is Exists in database ? " + ifEmail,
     Exists: ifEmail,
   });
+}
 
+const checkCode = async (req, res)=>{
+  const {email , code} = req.body;
+  console.log(email,code);
+  const auth =await CheckCode(email,code)
+  res.status(200).json({
+    email: email,
+    code: code,
+    message: "email auth in code ? " + auth.email,
+    auth: auth,
+  });
 }
 
 const getAll = async (req, res) => {
-  sendMail("chbaror@gmail.com" , "hi is test ?" , "this is work" )
-
   try {
     users = await db.User.findAll()
     res.status(200).json(users);
@@ -65,9 +70,11 @@ const deleteById = async (req, res) => {
   }
 };
 
+
 module.exports = {
   getAll,
   create,
   deleteById,
-  emailIfExists
+  emailIfExists,
+  checkCode
 };
