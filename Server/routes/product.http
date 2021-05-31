@@ -13,3 +13,8 @@ content-type: application/json
 }
 
 ###
+
+GET http://localhost:3000/productsAll HTTP/1.1
+
+###
+

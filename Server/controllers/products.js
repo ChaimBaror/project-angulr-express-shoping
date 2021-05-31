@@ -7,7 +7,7 @@ const { validateProducts } = require('../validation/validation')
 const getAllProducts = async (req, res) => {
   try {
     Products = await db.Product.findAll()
-    res.status(200).json(users);
+    res.status(200).json(Products);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

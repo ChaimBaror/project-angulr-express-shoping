@@ -2,6 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { ShopingCart, ShopingCartService } from 'src/app/services/shoping-cart.service';
 import {MatTableDataSource} from '@angular/material/table';
+import { AddProdctComponent } from './../add-prodct/add-prodct.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-all-prodct-manager',
@@ -13,13 +16,24 @@ import {MatTableDataSource} from '@angular/material/table';
 
 export class AllProdctManagerComponent implements AfterViewInit  {
   products$;
-
-
-  constructor(private ShopingCartService: ShopingCartService)  {}
+  constructor(
+    private ShopingCartService: ShopingCartService,
+    private ProductService : ProductService,
+    private dialog: MatDialog,
+    ) {}
+    AddProdct(){
+      this.dialog.open(AddProdctComponent,{
+        width: '270px',
+      }) 
+      }
+    getAllProdct(){
+this.ProductService.getAllProduct()
+    }  
 
   ngAfterViewInit() {
     this.products$=  this.ShopingCartService.getData()
   }
+ 
 
 
 

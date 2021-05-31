@@ -1,1 +1,51 @@
 <p>add-prodct works!</p>
+
+<div class="container">
+    <form [formGroup]="addProdcut" (ngSubmit)="submit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label><b> Category </b></mat-label>
+            <input formControlName="category" matInput placeholder="Enter category" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Title Name</mat-label>
+            <input type="text" id="title" formControlName="title" matInput placeholder="Enter title "
+                required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Text </mat-label>
+            <input type="text" id="text" formControlName="text" matInput placeholder="Enter text "
+                required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Price </mat-label>
+            <input matInput id="price" formControlName="price" placeholder="Price Prodcut">
+        </mat-form-field>
+
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Pictures </mat-label>
+            <input type="" matInput id="pictures" formControlName="pictures" placeholder="pictures Prodcut">
+        </mat-form-field>
+
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Amount </mat-label>
+            <input matInput id="amount" formControlName="amount" placeholder="Amount Prodcuts">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Active </mat-label>
+            <input type="" matInput id="active" formControlName="active" placeholder="active Prodcut">
+        </mat-form-field>
+     
+        <div mat-dialog-actions>
+            <button mat-button [mat-dialog-close]>No Thanks</button>
+            <button type="submit" mat-button [mat-dialog-close] cdkFocusInitial>Ok</button>
+        </div>
+    </form>
+</div>
