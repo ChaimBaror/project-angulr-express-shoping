@@ -23,12 +23,8 @@ export class ProductService {
   AddProdct(Product : Products){
     this.ApiHTTPService.requestBady("/products", "POST", Product ) 
   }
-  getAllProduct(){
-   const product = this.ApiHTTPService.request("/productsAll","GET")
-   product.subscribe((p)=>{
-     console.log(p);
-     
-   })
+ getAllProduct(){
+  return this.ApiHTTPService.request("/productsAll","GET")
    
   }
 }

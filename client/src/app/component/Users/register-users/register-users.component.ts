@@ -15,23 +15,24 @@ export class RegisterUsersComponent implements OnInit {
   public UserExist;
   private code;
   private codeRandom
-  private authentication=false
+  private authentication = false
 
 
   constructor(
-    private logginService : UsersService,
     public dialogRef: MatDialogRef<RegisterUsersComponent>,
     private fb: FormBuilder,
     private UsersService: UsersService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    this.UserExist = this.UsersService.arrayUsers.findIndex(Users => Users.email == this.data.email)
+    // this.UserExist = this.UsersService.arrayUsers.findIndex(Users => Users.email == this.data.email)
+    this.UserExist = this.UsersService.UserExist(this.data.email)
+
 
     console.log("this.UserExist", this.UserExist);
 
   }
 
   ngOnInit(): void {
-    this.codeRandom =  Math.floor(Math.random() * 10000);
+    this.codeRandom = Math.floor(Math.random() * 10000);
   }
 
   options = this.fb.group({
@@ -41,22 +42,22 @@ export class RegisterUsersComponent implements OnInit {
   });
 
   submit() {
-    const {Email ,UserName ,PhoneNumber} = this.options.value;
-    const Users: Users = { 
-    email:Email,
-    name:UserName,
-    PhoneNumber : PhoneNumber
+    const { Email, UserName, PhoneNumber } = this.options.value;
+    const Users: Users = {
+      email: Email,
+      name: UserName,
+      PhoneNumber: PhoneNumber
     }
     console.log("FormBuilder", Users);
-    this.logginService.postUser(Users)
+    this.UsersService.postUser(Users)
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  codeSendAuthentication(){
-    if(this.code == this.codeRandom)
-    this.authentication=true;
+  codeSendAuthentication() {
+    if (this.code == this.codeRandom)
+      this.authentication = true;
   }
 }

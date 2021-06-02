@@ -7,16 +7,29 @@
                 <button (click)="getAllProdct()" class="text-success">get prodct</button>
 
             </span>
+
+            <mat-selection-list #shoes>
+                <mat-list-option *ngFor="let shoe of products$ | async">
+                    category :   {{shoe.category}} title {{shoe.title}}
+                </mat-list-option>
+              </mat-selection-list>
+              
+              <p>
+                Options selected: {{shoes.selectedOptions.selected.length}}
+              </p>
+
+            
             <table class="table table-bordered table-responsive-md table-striped text-center">
 
                 <thead class="table">
                     <!-- 
-            id:string,
-            title:string
-            name:string,
-            img:string,
-            price:number,
-            amount:number -->
+              category:String, 
+  title :String,
+  text :String,
+  price :String,
+  Pictures:String,
+  amount:String,
+  active :boolean -->
                     <tr>
                         <th class="text-center">Index</th>
                         <th class="text-center">Image</th>

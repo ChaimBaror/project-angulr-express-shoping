@@ -26,12 +26,12 @@ export class AllProdctManagerComponent implements AfterViewInit  {
         width: '270px',
       }) 
       }
-    getAllProdct(){
-this.ProductService.getAllProduct()
+   async getAllProdct(){
+   this.products$ = await  this.ProductService.getAllProduct()
     }  
 
   ngAfterViewInit() {
-    this.products$=  this.ShopingCartService.getData()
+    this.products$ =  this.ShopingCartService.getData()
   }
  
 

@@ -12,12 +12,12 @@ export type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PATCH';
 export class ApiHTTPService {
 
   constructor(private httpClient: HttpClient) { }
-  
+
   request<T>(url: string, method: HttpMethod): Observable<T> {
     let headers = new HttpHeaders();
     let user = JSON.parse(localStorage.getItem('currentUser'))
-    if(user)
-    headers = headers.set('Authorization', `Bearer ${user.accessToken}`);
+    if (user)
+      headers = headers.set('Authorization', `Bearer ${user.accessToken}`);
     return this.httpClient.request<T>(method, environment.apiUrl + url, { headers: headers, });
   }
 
