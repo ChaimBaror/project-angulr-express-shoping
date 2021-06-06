@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "basar"
+  "defaultProject": "basar",
+  "cli": {
+    "analytics": "09611a92-82c6-4970-b86e-911101047f2e"
+  }
 }
