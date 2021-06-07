@@ -12,6 +12,8 @@ RUN mkdir /app
 COPY package.json /app/
 
 
+VOLUME [ "/app" ]
+
 RUN npm install
 
 COPY . /app/
