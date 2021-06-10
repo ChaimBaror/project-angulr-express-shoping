@@ -1,0 +1,14 @@
+pipeline {
+    agent {
+          label {
+          label "slave01"
+       }
+    }
+    stages {
+        stage('build') {
+            steps {
+                echo 'hello jenkinsflie hello'
+            }
+        }
+    }
+}
