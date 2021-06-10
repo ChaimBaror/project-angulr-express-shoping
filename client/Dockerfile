@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update
 RUN apt install -y npm curl
@@ -8,11 +9,10 @@ RUN apt update
 
 RUN apt-get install -y nodejs
 
+RUN npm install -y -g @angular/cli
+
 RUN mkdir /app
 COPY package.json /app/
-
-
-VOLUME [ "/app" ]
 
 RUN npm install
 
@@ -20,7 +20,7 @@ COPY . /app/
 WORKDIR /app
 EXPOSE 4200
 
-CMD [ "npm" , "start" ]
+CMD ["ng","serve","--host", "0.0.0.0"]
 
 
 

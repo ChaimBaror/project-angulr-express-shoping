@@ -1,11 +1,14 @@
-version: "3.9"
-servics:
+version: "3"
+services:
     server:
         build: Server/
         ports:
-            -"3000:3000"
+            - "3001:3000"
     client:
         build: client/
+        volumes:
+            - ./client/src:/app
         ports:
-            -"4200:4200"
+            - "4201:4200"
+
        
